@@ -1,0 +1,63 @@
+<!-- created on JAN 09, 2015
+by Jacob Naiyeju
+Project Description:
+Creating the tabbed effect using HTML5 -->
+
+<!DOCTYPE>
+<HTML>
+	<head>
+		<Title>
+			Tabbed effect
+		</Title>
+		<style type="text/css">
+			.tabs_content{
+				display:none;
+				border:1px solid #ccc;
+			}
+			.float_stop{
+				clear:both;
+			}
+			.tabs{
+				float:left;
+				border:1px solid #ccc;
+				background-color:#ccc;
+				border-right-color:#000;
+				padding:0 1em;
+			}
+			.displayBlock{
+				display:block;
+				border:1px solid #ccc;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="main">
+			<div id="tab_menu">
+				<div id="tab0" class="tabs" onclick=toggletabs("tab0_content")>Tab0</div>
+				<div id="tab1" class="tabs" onclick=toggletabs("tab1_content")>Tab1</div>
+				<div id="tab2" class="tabs" onclick=toggletabs("tab2_content")>Tab2</div>
+				<div class="float_stop"></div>
+			</div>
+			<div id="tab0_content" class="tabs_content" >
+				<p>tab0 Test</p>
+			</div>
+			<div id="tab1_content" class="tabs_content" >
+				<p>tab1 Test</p>
+			</div>
+			<div id="tab2_content" class="tabs_content" >
+				<p>tab2 Test</p>
+			</div>
+		</div>
+		<div id="footer">
+			<script type="text/javascript">
+				function toggletabs(tab_content){
+					var r=document.getElementsByClassName("displayBlock");
+					for(var i=0;i<r.length;i++){
+						r[i].className="tabs_content";
+					}
+					document.getElementById(tab_content).className="displayBlock";
+				}
+			</script>
+		</div>
+	</body>
+</HTML>

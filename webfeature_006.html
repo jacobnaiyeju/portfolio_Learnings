@@ -1,0 +1,75 @@
+<!-- Created on JAN 16, 2015
+by Jacob Naiyeju
+Project Description
+Drawing a football pitch using CSS-->
+
+<!Doctype html>
+<html lang ="en">
+	<head>
+		<style>
+			#pitchOuterRegion{
+				float:left;
+				width:30%;
+				height:800px;
+				background-color:#000000;
+				padding:0.5% 0.5%;
+			}
+			#pitch{
+				float:left;
+				width:99%;
+				height:100%;
+				border:1px solid #ffffff;
+			}
+			#centerPitch{
+				float:left;
+				width:100%;
+				height:19.5%;
+			}
+			#centerCircle{
+				float:left;
+				width:28%;
+				height:98%;
+				border:2px solid #ffffff;
+				border-radius:100%;
+			}
+			#centerLine{
+				float:left;
+				width:100%;
+				border-bottom:2px solid #ffffff;
+				height:50%;
+			}
+			.pitchHalves{
+				float:left;
+				width:100%;
+				height:40%;
+			}
+			.centerLineLR{
+				float:left;
+				width:35%;
+				border-bottom:2px solid #ffffff;
+				height:50.5%;
+			}
+			.floatStop{clear:both;}
+		</style>
+	</head>
+	<body>
+		<div id="main">
+			<div id="pitchContainer">
+				<div id="pitchOuterRegion">
+					<div id="pitch">
+						<div id="opponentSide" class="pitchHalves"></div>
+						<div id="centerPitch">
+							<div id="centerLineL" class="centerLineLR"></div>
+								<div id="centerCircle"><div id="centerLine"></div></div>
+							<div id="centerLineR" class="centerLineLR"></div>
+						</div>
+						<div id="homeSide" class="pitchHalves"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="floatStop"></div>
+		<div id="footer">
+		</div>
+	</body>
+</html>

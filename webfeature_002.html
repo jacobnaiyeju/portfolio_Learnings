@@ -1,0 +1,58 @@
+<!-- created on JAN 12, 2015
+by Jacob Naiyeju
+Project Description:
+Creating the zoomed effect on hovered elements -->
+
+<!Doctype>
+<html>
+	<head>
+		<title>Zoomed effect on hovered on items</title>
+		<style type="text/css">
+			.shared{
+				margin:40px;
+				float:left;
+			}
+			.zoom{
+				border:1px solid black;
+				width:10%;
+				height:20%;
+				-webkit-transition: width 2s, height 2s,-webkit-transform 2s;
+				transition:width 3s,height 3s,transform 2s;
+			}
+			.zoom:hover{
+				border:2px solid black;
+				width:20%;
+				height:30%;
+				-webkit-animation: mutatecolor 3s;
+				animation: mutatecolor 3s;
+			}
+			.pushToBottom{
+				text-align:bottom;
+				
+			}
+			@-webkit-keyframes mutatecolor{
+				0%{background-color:#000;}
+				25%{background-color:#444;}
+				50%{background-color:#888;}
+				75%{background-color:#ccc;}
+				100%{background-color:#fff;}
+			}
+			@keyframes mutatecolor{
+				from{background-color:red;}
+				to{background-color:yellow;}
+			}
+		</style>
+	</head>
+	<body>
+		<div id="main">
+			<div id="TestBox" class="shared zoom">
+				<p>Hover over me</p>
+				<div class="pushToBottom">
+					<p>the content here should not move out of position</p>
+				</div>
+			</div>
+		</div>
+		<div id="footer">
+		</div>
+	</body>
+</html>

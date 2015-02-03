@@ -1,0 +1,92 @@
+<!-- Created on JAN 19, 2015 by Jacob Naiyeju
+Modified on JAN 20, 2015 by Jacob Naiyeju
+
+Project Description
+Demonstrating a single page solution using angulalarJS-->
+
+<!Doctype html>
+<html lang ="en" data-ng-app="demo">
+	<head>
+		<title>Single page solution demo</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+		<style type="text/css">
+			.active-selection{
+				background-color:black;
+				font-weight:bold;
+			}
+			.page{
+				display:"none";
+			}
+		</style>
+	</head>
+	<body>
+		<header data-ng-controller="navController">
+			<nav class="navbar navbar-default">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<a class="navbar-brand">{{websiteName}}</a>
+					</div>
+					<div>
+						<ul class="nav navbar-nav">
+							<li data-ng-repeat="x in navList"
+								data-ng-class="{'active-selection':x == activeClass}"
+							>
+								<a data-ng-click="operation(x)" href="#{{x}}">{{x}}
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</header>
+		<div id="main">
+		<div data-ng-view></div>
+		</div>
+	</body>
+	<footer>
+		<script>
+			var app=angular.module("demo",['ngRoute','appControllers']);
+			app.config(['$routeProvider',function($routeProvider){
+				$routeProvider
+					.when('/Home',{
+						templateUrl:'partials/home.html',
+						controller:'homeController'
+					})
+					.when('/About',{
+						templateUrl:'partials/about.html',
+						controller:'aboutController'
+					})
+					.when('/Contact',{
+						templateUrl:'partials/contact.html',
+						controller:'contactController'
+					})
+					.otherwise({
+						redirectTo: '/Home'
+					});
+			}]);
+		</script>
+		<script>
+			var appControllers=angular.module("appControllers",[]);
+			appControllers.controller("navController",function($scope){
+				$scope.websiteName="Demo";
+				$scope.navList=["Home","About","Contact"];
+				$scope.operation=function(x){
+					$scope.activeClass=x;			
+				};
+			});
+			appControllers.controller("homeController",function($scope){
+				$scope.message="This is home page";
+			});
+			appControllers.controller("aboutController",function($scope){
+				$scope.message="This is about page";
+			});
+			appControllers.controller("contactController",function($scope){
+				$scope.message="This is contact page";
+			});
+		</script>
+	</footer>
+</html>

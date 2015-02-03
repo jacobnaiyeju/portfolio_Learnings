@@ -1,0 +1,40 @@
+<!-- created on JAN 14, 2015
+by Jacob Naiyeju
+Project Description:
+Working with AngularJS -->
+
+<!Doctype Html>
+<html data-ng-app="JakeApp">
+	<head>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+	</head>
+	<body>
+		<div id="main">
+			<div data-ng-controller="listadder">
+				<p>Name:<input type="text" data-ng-model="name"/></p>
+				<button data-ng-click="customAction()">Click me</button>
+				<div>
+					<ul><li data-ng-repeat="x in list">{{x.name}}</li></ul>
+				</div>
+			</div>
+		</div>
+		<div id="footer">
+			<script>
+				var app=angular.module("JakeApp",[]);
+			</script>
+			<script>
+				app.controller("listadder",function($scope){
+					$scope.list=[];
+					$scope.count=0;
+					$scope.name="";
+					$scope.customAction=function(){
+						if($scope.name!=""){
+							$scope.list[$scope.count]={name:$scope.name};
+							$scope.count=$scope.count+1;
+						}
+					};	
+				});
+			</script>
+		</div>
+	</body>
+</html>
